@@ -1,0 +1,50 @@
+.swiper {
+  width: $container-lg;
+
+  .swiper-wrapper {
+    margin-bottom: 4rem; // SwiperJS Pagination dots will be moved down
+
+    .swiper-slide {
+      @include gradientBackground;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+
+      p {
+        margin-bottom: 1.4rem;
+      }
+
+      .patient {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .avatar {
+          width: 2.5rem;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+
+        h5 {
+          margin-bottom: 0.4rem;
+        }
+      }
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: $primary-color;
+  }
+}
+
+// MEDIA QUERIES FOR MOBILE:
+@media screen and (max-width: 37.5em) {
+  .swiper {
+    .swiper-wrapper {
+      .swiper-slide {
+        padding: 1.2rem;
+      }
+    }
+  }
+}

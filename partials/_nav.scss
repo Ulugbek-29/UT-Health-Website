@@ -1,0 +1,146 @@
+nav {
+  width: 100vw;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 1rem 1rem rgba($black-color, 0.1);
+  @include gradientBackground; // MIXIN
+
+  // NAVBAR STYLES change on scroll using main.js:
+  &.window-scroll {
+    background: $white-color;
+
+    .container {
+      a {
+        color: $black-color;
+
+        & > h3 {
+          color: $black-color;
+        }
+
+        &.btn {
+          color: $white-color;
+        }
+      }
+
+      button {
+        color: $black-color;
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    button {
+      display: none; // These menu buttons need to be displayed only in TABLETS / MOBILES
+    }
+
+    a {
+      font-weight: 400;
+    }
+  }
+}
+
+// =========================== MEDIA QUERIES for NAVBAR ===========================
+
+// MEDIA QUERIES FOR TABLETS & MOBILE:
+@media screen and (max-width: 64em) {
+  nav {
+    // NAVBAR style changes on scroll using main.js:
+    &.window-scroll {
+      .container {
+        a {
+          color: $white-color;
+        }
+      }
+    }
+
+    .container {
+      button {
+        display: inline-block;
+        background: transparent;
+        color: $white-color;
+        font-size: 2.2rem;
+        cursor: pointer;
+
+        &#close__nav-btn {
+          display: none;
+        }
+      }
+
+      ul {
+        position: fixed;
+        right: 5%;
+        top: 5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        display: none; // By default not displayed
+        perspective: 300px; // For animation effect
+
+        li {
+          width: 100%;
+          opacity: 0;
+          animation: flipNavItem 300ms ease forwards;
+          transform-origin: top;
+
+          &:nth-child(2) {
+            animation-delay: 150ms;
+          }
+
+          &:nth-child(3) {
+            animation-delay: 300ms;
+          }
+
+          &:nth-child(4) {
+            animation-delay: 450ms;
+          }
+
+          &:nth-child(5) {
+            animation-delay: 600ms;
+          }
+
+          @keyframes flipNavItem {
+            0% {
+              transform: rotateX(90deg);
+            }
+
+            100% {
+              transform: rotateX(0deg);
+              opacity: 1;
+            }
+          }
+
+          a {
+            height: 100%;
+            display: block;
+            padding: 1rem 1.5rem;
+            border-radius: 0;
+            background: linear-gradient(
+              $primary-color-variant,
+              darken($primary-color-variant, 12%)
+            );
+
+            &.btn {
+              background: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+#appointment {
+  .container {
+    display: grid;
+    grid-template-columns: 47% 47%;
+    gap: 6%;
+
+    .info {
+      p {
+        margin: 0.4rem 0 2rem;
+        max-width: 85%;
+      }
+
+      article {
+        display: flex;
+        gap: 1.5rem;
+
+        &:not(:last-child) {
+          margin-bottom: 1.5rem;
+        }
+
+        small {
+          margin-top: 0.6rem;
+          display: block;
+          max-width: 70%;
+        }
+
+        .info__icon {
+          background-color: $secondary-color;
+          color: $white-color;
+          padding: 0.8rem;
+          border-radius: 50%;
+          display: flex;
+          height: fit-content;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+
+      .form__group {
+        label {
+          font-size: 0.95rem;
+          margin-bottom: 0.4rem;
+          display: inline-block;
+          font-weight: 600;
+        }
+
+        input,
+        textarea,
+        select {
+          background: $white-color;
+          font-size: 1rem;
+          padding: 0.85rem 1rem;
+          display: block;
+          width: 100%;
+          border-radius: 0.4rem;
+          resize: none; // Don't allow for textarea to be resized by the user
+          appearance: none; // Disappears the little drop down arrow on select elements
+        }
+      }
+
+      input[type="submit"] {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES FOR TABLETS:
+@media screen and (max-width: 64em) {
+  #appointment {
+    .container {
+      .info {
+        p {
+          max-width: 95%;
+        }
+
+        article {
+          small {
+            max-width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES FOR MOBILE:
+@media screen and (max-width: 37.5em) {
+  #appointment {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+
+      .info {
+        h2,
+        p {
+          text-align: center;
+          margin-inline: auto;
+        }
+      }
+
+      form {
+        input[type="submit"] {
+          display: block;
+          width: 75%;
+          margin-inline: auto;
+        }
+      }
+    }
+  }
+}
